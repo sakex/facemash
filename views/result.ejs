@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>faceMash HEC Lausanne</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+
+  @font-face {
+    font-family: myriad;
+    src: url(myriad);
+  }
+
+  body{
+    font-family: myriad;
+    overflow-x: hidden;
+    font-size: 28px;
+    background-image: url(http://kaba35.com/wp-content/uploads/2015/11/Savin-NY-Website-Background-Web.jpg);
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .reponse{
+    background-color: rgba(47, 61, 84, 0.8);
+    text-align: center;
+    color: white;
+    border-radius: 28px;
+  }
+
+  img{
+    width: 100px;
+    height: 100px;
+  }
+
+	</style>
+  </head>
+  <body>
+
+    <%
+    for (i in results){ %>
+      <div class="reponse">
+        <img src="/images/<%= results[i].image %>">
+        <br>
+        <h1>
+          Score: <%= results[i].score %>
+        </h1>
+      </div>
+
+
+    <% } %>
+
+
+
+  <script>
+
+  </script>
+
+  </body>
+</html>

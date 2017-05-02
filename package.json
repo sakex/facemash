@@ -1,0 +1,32 @@
+{
+  "name": "marketing",
+  "start": "node marketing.js",
+  "version": "1.0.0",
+  "description": "Projet pour le marketing",
+  "main": "ytparty.js",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "~4.14.0",
+    "socket.io": "~1.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Alexandre Senges",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakex/YTParty.git"
+  },
+  "keywords": [
+    "Youtube",
+    "webapp",
+    "Socket.io",
+    "Express"
+  ],
+  "bugs": {
+    "url": "https://github.com/sakex/YTParty/issues"
+  },
+  "homepage": "https://github.com/sakex/YTParty#readme"
+}

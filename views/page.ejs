@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>FaceMash HEC Lausanne</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/css">
+  <style>
+	</style>
+  </head>
+  <body>
+
+
+    <div id="a0" class="containers">
+      <img src="/images/<%= results.votes[0].image %>">
+      <!-- On a incrémenté les images de 0 à 400 dans la DB, donc on en envoie 2 différentes aléatoires-->
+      <br>
+      <h1>
+        Score: <%= results.votes[0].score %>
+      </h1>
+    </div>
+
+
+    <div id="a1" class="containers">
+      <img src="/images/<%= results.votes[1].image %>">
+      <br>
+      <h1>
+        Score: <%= results.votes[1].score %>
+      </h1>
+    </div>
+
+    <a href="/result" id="switch">Résultats</a>
+
+    <p id="pass">Passer</p>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+    //Si tu lis ca, salut à toi!
+    // J'ai l'impression que le compilateur ne prend pas mes commentaires en compte...
+  (function(){
+    var socket = io.connect(window.location.href); //On utilise les Sockets, pck why not?
+
+    //Le serveur a donné un ID à notre requête, pour ne pas pouvoir tricher
+    //Quand on clique, on renvoie l'ID ainsi que la valeur du vote!
+    // Après on actualise et on laisse EJS nous envoyer 2 nouveux votes
+
+  $("#a0").click(function(){
+    socket.emit('voted', {id: <%= results.id %>, voteval: 0});
+    location.reload();
+  });
+
+  $("#a1").click(function(){
+    socket.emit('voted', {id: <%= results.id %>, voteval: 1});
+    location.reload();
+  });
+
+  // Là on actualise seulement pck on veut pas voter
+  // On dit quand même au serveur d'effacer la requête.
+  $("#pass").click(function(){
+    socket.emit('pass', '<%= results.id %>');
+    location.reload();
+  });
+})();
+  </script>
+  </body>
+</html>
